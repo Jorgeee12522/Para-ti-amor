@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        #botonSi {
+            display: inline-block;
+        }
+        #botonNo {
+            display: inline-block;
+            position: absolute;
+        }
+        /* Primera imagen más grande y debajo de los botones */
+        #primeraImagen {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+        #segundoPaso, #tercerPaso {
+            display: none;
+        }
+        /* Tercera imagen aún más grande y centrada */
+        #tercerPaso {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #tercerPaso img {
+            width: 120%;
+            max-width: 1300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Señorita Ixchel (alias el amor de mi vida), ¿Quiere ser mi San Valentín❤️?</h1>
+    
+    <!-- Botones alineados arriba -->
+    <button id="botonSi" onclick="answer('Sí!')">Sí!</button>
+    <button id="botonNo" onclick="moverBoton()">No</button>
+    
+    <!-- Primera imagen ahora debajo de los botones -->
+    <img id="primeraImagen" src="https://i.imgur.com/nCGfc5E.jpg" alt="Imagen de San Valentín">
+    
+    <div id="segundoPaso">
+        <img id="imagen" src="https://i.imgur.com/T7ldTte.jpg" alt="Imagen San Valentín" onclick="mostrarTexto()">
+        <p style="font-size: 24px; color: white; margin-top: 20px;">¡Presiona la carta de amor! ❤️</p>
+    </div>
+    
+    <div id="tercerPaso">
+        <img src="https://i.imgur.com/ZJ1noyI.jpg" alt="Imagen Final">
+    </div>
+
+    <script>
+        function answer(val) {
+            if (val === 'Sí!') {
+                document.querySelector("h1").style.display = "none";
+                document.querySelectorAll("button").forEach(button => button.style.display = "none");
+                document.getElementById("primeraImagen").style.display = "none";
+
+                document.getElementById("segundoPaso").style.display = "block";
+            }
+        }
+
+        function mostrarTexto() {
+            document.getElementById("segundoPaso").style.display = "none";
+            document.getElementById("tercerPaso").style.display = "flex";
+        }
+
+        function moverBoton() {
+            let botonNo = document.getElementById("botonNo");
+
+            let nuevaX = Math.random() * 100 - 50;
+            let nuevaY = Math.random() * 100 - 50;
+
+            botonNo.style.transform = `translate(${nuevaX}px, ${nuevaY}px)`;
+        }
+    </script>
+</body>
+</html>
